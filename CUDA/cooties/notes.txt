@@ -1,0 +1,44 @@
+Using std::transform     from <algorithm>
+
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+int main() {
+    std::vector<int> source = {1, 2, 3, 4, 5};
+    std::vector<int> destination;
+    
+    // Resize destination to fit the results, C++ wont allocate memory automatically
+    destination.resize(source.size());
+
+    std::transform(source.begin(), source.end(), destination.begin(), [](int n) {
+        return n * n;
+    });
+
+    // destination is now {1, 4, 9, 16, 25}
+    // This was a Unary operation meaning the lambda took in a single parameter, Yes Binary means it took in two params.
+}
+
+Lambda square brackets are called the capture clause, used to define which outside variables are allowed to be used in the lambda.
+[capclause](param){logic}
+
+Just learned to use ++variable instead of variable++ ... (pre and post increment) ... the pre is more efficient and doesn't create 
+a temp copy of the iterator like post.
+
+Here is an example of binary operation...
+
+std::vector<int> a = {1, 2, 3};
+std::vector<int> b = {10, 20, 30};
+std::vector<int> sum(3);
+
+std::transform(a.begin(), a.end(), b.begin(), sum.begin(), [](int x, int y) {
+    return x + y;
+});
+
+// sum is now {11, 22, 33}
+
+side note: instead of sum.begin(), you could use std::back_inserter(sum) which is just calling push_back() so that you can avoid 
+overflowing the memory if not enough space (improve safety).
+_______________________________________________________________________________________.NEXT
+
+//
