@@ -1,0 +1,44 @@
+STACK MEMORY:
+
+- Used for storing local variables and managing function calls.
+
+- Each time we call a function, the function's variables are automatically
+  allocated onto the stack. This automatic allocation and deallocation are
+what make stack memory efficient to use. 
+
+- However, we cannot forget variables on the stack have limited scope and
+  lifetime. They(variables) only exist in functions they are declared in. Once
+the function completes, the memory is released. Freeing it up for the next
+function call.
+
+- Stack follows a LIFO structure.
+
+================================================================================
+HEAP MEMORY:
+
+- Use dynamic memory allocation to request memory from the heap during
+  runtime. It gives us flexibility for handling more advanced memory needs.
+
+- Unlike stack memory, which is auto managed, we need to manually manage
+  memory on the heap. This is where we use the new and delete operators. 
+
+- Use the "new" operator to dynamically allocate memory on the heap. Notice
+  pointers are used when dealing with dynamically allocated variables.
+
+- Two examples:
+
+int* ptr = new int(11);
+SomeClass* someClassPtr = new SomeClass(params);
+
+
+- We then use the "delete" operator to deallocate memory that we allocated
+  with new. When we make sure each "new" has a matching "delete", we avoid
+MEMORY LEAKS. Memory leaks are what happen when we allocate memory but never
+free it, and that is a waste of resources.
+
+E.g.:
+
+delete ptr;
+delete someClassPtr;
+
+========================================================================================
